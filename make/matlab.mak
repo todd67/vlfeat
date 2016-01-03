@@ -181,16 +181,22 @@ endif
 
 # Linux on 32 bit processor
 ifeq ($(ARCH),glnx86)
+MEX_FLAGS += CC='$(CC)'
+MEX_FLAGS += LD='$(CC)'
 MEX_FLAGS += CFLAGS='$$CFLAGS $(call escape,$(STD_CFLAGS))'
 MEX_FLAGS += LDFLAGS='$$LDFLAGS $(call escape,$(STD_LDFLAGS))'
 endif
 
 # Linux on 64 bit processorm
 ifeq ($(ARCH),glnxa64)
+MEX_FLAGS += CC='$(CC)'
+MEX_FLAGS += LD='$(CC)'
 MEX_FLAGS += -largeArrayDims
 MEX_FLAGS += CFLAGS='$$CFLAGS $(call escape,$(STD_CFLAGS))'
 MEX_FLAGS += LDFLAGS='$$LDFLAGS $(call escape,$(STD_LDFLAGS))'
 endif
+
+MEX_FLAGS += '-v'
 
 # For efficiency reasons, immediately expand this variable once
 MEX_FLAGS := $(MEX_FLAGS)
